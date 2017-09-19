@@ -1,0 +1,382 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="~/Content/css/framework-font.css" rel="stylesheet" />
+    <link href="~/Content/css/framework-ui.css" rel="stylesheet" />
+    <script src="~/Content/js/jquery/jquery-2.1.1.min.js"></script>
+    <link href="~/Content/css/framework-theme.css" rel="stylesheet" />
+    <link href="~/Content/js/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/framework-theme.css" rel="stylesheet" />
+    <script src="~/Content/js/charts/Chart.js"></script>
+    <script>
+
+    </script>
+</head>
+<body>
+    <section class="app-main">
+        <section class="screen-four">
+            <div class="box">
+                <button class="roll-nav roll-right fullscreen" style="float:right;"><i class="fa fa-arrows-alt"></i></button>
+                <div class="box-container">
+
+                </div>
+            </div>
+            <div class="box">
+                <button class="roll-nav roll-right fullscreen" style="float:right;"><i class="fa fa-arrows-alt"></i></button>
+                <div class="box-container">
+                    <ul class="nav nav-tabs">
+                        <li><a href="#identifier" data-toggle="tab">室内地图</a></li>
+                        <li><a href="#identifier" data-toggle="tab">设备管理</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="box">
+                <button class="roll-nav roll-right fullscreen" style="float:right;"><i class="fa fa-arrows-alt"></i></button>
+                <div class="box-container">
+                    <ul class="nav nav-tabs">
+                        <li><a href="#identifier" data-toggle="tab">实时警情</a></li>
+                        <li><a href="#identifier" data-toggle="tab">警情处理</a></li>
+                        <li><a href="#identifier" data-toggle="tab">实时数据</a></li>
+                        <li><a href="#identifier" data-toggle="tab">异常处理</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="box">
+                <div class="box-container">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">监控区</h3>
+                        </div>
+                        <div class="panel-body">
+                            无视频
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+        </section>
+    </section>
+    <style>
+        .video-container {
+            height: 100%;
+            width: 100%;
+        }
+
+        .box-container .tabs-container .el-tabs__header {
+            margin: 0;
+        }
+
+        .video-container .title {
+            background-color: #f0f0f0;
+            height: 43px;
+            width: 100%;
+        }
+
+            .video-container .title .text {
+                color: #20a0ff;
+                font-size: 16px;
+                line-height: 43px;
+                margin-left: 10px;
+            }
+
+            .video-container .title .show-single {
+                cursor: pointer;
+                float: right;
+                height: 23px;
+                margin: 10px 70px 0 0;
+                width: 23px;
+            }
+
+            .video-container .title .auto-switch {
+                cursor: pointer;
+                float: right;
+                height: 23px;
+                margin: 10px 35px 0 0;
+                width: 23px;
+            }
+
+        .video-container .video-play, .video-container .video-play .body {
+            height: calc(100% - 43px);
+            width: 100%;
+        }
+
+            .video-container .video-play .body {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .video-container .video-play, .video-container .video-play .body {
+                height: calc(100% - 43px);
+                width: 100%;
+            }
+
+                .video-container .video-play .body .des {
+                    align-items: center;
+                    display: flex;
+                    flex-direction: column;
+                    height: 100%;
+                    justify-content: center;
+                    width: 100%;
+                }
+
+                    .video-container .video-play .body .des .el-icon-warning {
+                        color: #8492a6;
+                        font-size: 64px;
+                    }
+
+        [class*=" el-icon-"], [class^="el-icon-"] {
+            display: inline-block;
+            font-family: element-icons;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: 400;
+            line-height: 1;
+            text-transform: none;
+            vertical-align: baseline;
+        }
+
+        .video-container .video-play .footer {
+            background-color: #f0f0f0;
+            height: 43px;
+            width: 100%;
+        }
+
+        .el-pagination::after, .el-pagination::before {
+            content: "";
+            display: table;
+        }
+
+        .el-pagination button.disabled {
+            background-color: #fff;
+            color: #e4e4e4;
+            cursor: not-allowed;
+        }
+
+        .el-pagination .btn-prev {
+            border-radius: 2px 0 0 2px;
+            border-right: 0 none;
+        }
+
+        .el-pagination .btn-next, .el-pagination .btn-prev {
+            background: #fff none no-repeat scroll 50% center / 16px auto;
+            border: 1px solid #d1dbe5;
+            color: #97a8be;
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .el-pagination button {
+            background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+            border: medium none;
+            padding: 0 6px;
+        }
+
+        .el-pagination button, .el-pagination span {
+            box-sizing: border-box;
+            display: inline-block;
+            font-size: 13px;
+            height: 28px;
+            line-height: 28px;
+            min-width: 28px;
+            vertical-align: top;
+        }
+
+        button, html input[type="button"], input[type="reset"], input[type="submit"] {
+            cursor: pointer;
+        }
+
+        button, select {
+            text-transform: none;
+        }
+
+        button {
+            overflow: visible;
+        }
+
+        .el-pagination .btn-next .el-icon, .el-pagination .btn-prev .el-icon {
+            display: block;
+            font-size: 12px;
+        }
+
+        [class*=" el-icon-"], [class^="el-icon-"] {
+            display: inline-block;
+            font-family: element-icons;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: 400;
+            line-height: 1;
+            text-transform: none;
+            vertical-align: baseline;
+        }
+
+        .el-date-table, .el-pager, .el-radio {
+            -moz-user-select: none;
+        }
+
+        .el-pager {
+            -moz-user-select: none;
+            font-size: 0;
+            list-style: outside none none;
+            padding: 0;
+        }
+
+            .el-pager, .el-pager li {
+                display: inline-block;
+                margin: 0;
+                vertical-align: top;
+            }
+
+        .box button {
+            background: #fff none repeat scroll 0 0;
+            border: 0 none;
+            height: 39px;
+            line-height: 39px;
+            outline: 0 none;
+            width: 40px;
+        }
+
+        .screen-four .box {
+            background-color: #fff;
+            border-color: #fff;
+            border-radius: 0;
+            border-width: 1px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            height: calc(50% - 6px);
+            margin-bottom: 6px;
+            margin-right: 6px;
+            position: relative;
+            width: calc(50% - 6px);
+        }
+
+
+        .screen-four {
+            background-color: #ccc;
+            display: flex;
+            flex-wrap: wrap;
+            height: 100%;
+            overflow: hidden;
+            padding: 6px 0 0 6px;
+            width: 100%;
+        }
+
+        .app-main {
+            height: calc(100vh - 10px);
+            overflow-x: hidden;
+            overflow-y: auto;
+            width: 100%;
+        }
+
+        section {
+            display: block;
+        }
+
+        #copyrightcontent {
+            height: 30px;
+            line-height: 29px;
+            overflow: hidden;
+            position: absolute;
+            top: 100%;
+            margin-top: -30px;
+            width: 100%;
+            background-color: #fff;
+            border: 1px solid #e6e6e6;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .dashboard-stats {
+            float: left;
+            width: 20%;
+        }
+
+        .dashboard-stats-item {
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+            cursor: pointer;
+            height: 105px;
+            margin-right: 25px;
+            margin-bottom: 10px;
+            padding: 20px 20px;
+        }
+
+            .dashboard-stats-item .m-top-none {
+                margin-top: 2px;
+            }
+
+            .dashboard-stats-item h2 {
+                font-size: 35px;
+                font-family: inherit;
+                line-height: 1.1;
+                font-weight: 500;
+            }
+
+            .dashboard-stats-item h5 {
+                font-size: 14px;
+                font-family: inherit;
+                margin-top: 3px;
+                line-height: 1.1;
+            }
+
+
+            .dashboard-stats-item .stat-icon {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 30px;
+                opacity: .3;
+            }
+
+        .dashboard-stats i.fa.stats-icon {
+            width: 50px;
+            padding: 20px;
+            font-size: 50px;
+            text-align: center;
+            color: #fff;
+            height: 50px;
+            border-radius: 10px;
+        }
+
+        .panel-default {
+            border: none;
+            border-radius: 0px;
+            margin-bottom: 0px;
+            box-shadow: none;
+            -webkit-box-shadow: none;
+        }
+
+            .panel-default > .panel-heading {
+                color: #777;
+                background-color: #fff;
+                border-color: #e6e6e6;
+                padding: 10px 10px;
+            }
+
+            .panel-default > .panel-body {
+                padding: 10px;
+                padding-bottom: 0px;
+            }
+
+                .panel-default > .panel-body ul {
+                    overflow: hidden;
+                    padding: 0;
+                    margin: 0px;
+                    margin-top: -5px;
+                }
+
+                    .panel-default > .panel-body ul li {
+                        line-height: 27px;
+                        list-style-type: none;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
+
+                        .panel-default > .panel-body ul li .time {
+                            color: #a1a1a1;
+                            float: right;
+                            padding-right: 5px;
+                        }
+    </style>
+</body>
+</html>
