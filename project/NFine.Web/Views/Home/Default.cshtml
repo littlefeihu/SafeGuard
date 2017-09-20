@@ -17,7 +17,7 @@
     <script src="http://webapi.amap.com/ui/1.0/main.js"></script>
     <script src="https://webapi.amap.com/js/marker.js"></script>
     <script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
-    @*<script src="~/Content/js/fengmap.min.js"></script>*@
+    <script src="/Content/js/fengmap.min.js"></script>
 </head>
 <body>
     <section class="app-main">
@@ -35,6 +35,7 @@
                             </ul>
                     </div>*@
 
+                <div id="fengMap"></div>
             </div>
             <div class="box">
                 <button class="roll-nav roll-right fullscreen" style="float:right;"><i class="fa fa-arrows-alt"></i></button>
@@ -140,12 +141,79 @@
         }
 
     </script>
+    <script>
+        //获取版本号,设置title
+        document.title = '楼层切换V' + fengmap.VERSION;
 
+        //定义全局map变量
+        var map;
+        var fmapID = '10347';
+        var groupControl;
+
+        window.onload = function () {
+            //楼层控制控件配置参数
+            var ctlOpt = new fengmap.controlOptions({
+                //默认在右上角
+                position: fengmap.controlPositon.RIGHT_TOP,
+                //默认显示楼层的个数
+                showBtnCount: 7,
+                //初始是否是多层显示，默认单层显示
+                allLayer: false,
+                //位置x,y的偏移量
+                offset: {
+                    x: 20,
+                    y: 10
+                }
+            });
+            map = new fengmap.FMMap({
+                //渲染dom
+                container: document.getElementById('fengMap'),
+                //地图数据位置
+                mapServerURL: '/Content/data/' + fmapID,
+                //主题数据位置
+                mapThemeURL: '/Content/data/theme',
+                //设置主题
+                defaultThemeName: '3007',
+                // 默认比例尺级别设置为20级
+                defaultMapScaleLevel: 20,
+                //是否对不可见图层启用透明设置 默认为true
+                focusAlphaMode: false,
+                //对不聚焦图层启用透明设置，当focusAlphaMode = true时有效
+                focusAlpha: 0.1,
+                //开发者申请应用下web服务的key
+                key: 'adda7aa03da92158d64d7eecf0bf9a21',
+                //开发者申请应用名称
+                appName: '开发',
+            });
+
+            //打开Fengmap服务器的地图数据和主题
+            map.openMapById(fmapID);
+
+            //地图加载完成回掉方法
+            map.on('loadComplete', function () {
+                //创建楼层(按钮型)，创建时请在地图加载后(loadComplete回调)创建。
+                groupControl = new fengmap.scrollGroupsControl(map, ctlOpt);
+
+                //通过楼层切换控件切换聚焦楼层时的回调函数
+                //groupContro 即为楼层控件对象
+                groupControl.onChange(function (groups, allLayer) {
+                    //groups 表示当前要切换的楼层ID数组,
+                    //allLayer表示当前楼层是单层状态还是多层状态。
+                });
+            });
+        };
+    </script>
     <style type="text/css">
         body, html, #container {
             height: 100%;
             margin: 0px;
             font: 12px Arial;
+        }
+        #fengMap {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            overflow: hidden;
         }
 
         .circle {

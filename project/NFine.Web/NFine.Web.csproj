@@ -386,6 +386,22 @@
     <Content Include="Content\js\zsign\signet.gif" />
     <Content Include="Global.asax" />
     <Content Include="Index.htm" />
+    <Content Include="Resource\style\wedgets\img\2D.png" />
+    <Content Include="Resource\style\wedgets\img\3D.png" />
+    <Content Include="Resource\style\wedgets\img\arrow1.png" />
+    <Content Include="Resource\style\wedgets\img\arrow2.png" />
+    <Content Include="Resource\style\wedgets\img\arrow3.png" />
+    <Content Include="Resource\style\wedgets\img\arrow4.png" />
+    <Content Include="Resource\style\wedgets\img\group.png" />
+    <Content Include="Resource\style\wedgets\img\groups.png" />
+    <Content Include="Resource\style\wedgets\img\layer.png" />
+    <Content Include="Resource\style\wedgets\img\layers.png" />
+    <Content Include="Resource\style\wedgets\img\less.png" />
+    <Content Include="Resource\style\wedgets\img\more.png" />
+    <Content Include="Resource\style\wedgets\img\zoomin.png" />
+    <Content Include="Resource\style\wedgets\img\zoomin_on.png" />
+    <Content Include="Resource\style\wedgets\img\zoomout.png" />
+    <Content Include="Resource\style\wedgets\img\zoomout_on.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1068,6 +1084,10 @@
     <None Include="Properties\PublishProfiles\NFine.Framework.Release.pubxml" />
     <Content Include="Views\Login\Join.cshtml" />
     <Content Include="Views\Shared\_GisLayout.cshtml" />
+    <Content Include="Resource\DbBackup\201607181640402083.bak" />
+    <Content Include="Resource\DbBackup\201607190929504502.bak" />
+    <Content Include="Resource\DbBackup\201707101536225112.bak" />
+    <Content Include="Resource\DbBackup\201707101536436664.bak" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
