@@ -2,6 +2,8 @@
 <html>
 <head>
     <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
     <link href="~/Content/css/framework-font.css" rel="stylesheet" />
     <link href="~/Content/css/framework-ui.css" rel="stylesheet" />
     <script src="~/Content/js/jquery/jquery-2.1.1.min.js"></script>
@@ -9,36 +11,39 @@
     <link href="~/Content/js/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/css/framework-theme.css" rel="stylesheet" />
     <script src="~/Content/js/charts/Chart.js"></script>
-    <script>
 
-    </script>
+    <script type="text/javascript" src='http://webapi.amap.com/maps?v=1.3&key=e3d56420c12fec25b36199d832d7aa25'></script>
+    <!-- UI组件库 1.0 -->
+    <script src="http://webapi.amap.com/ui/1.0/main.js"></script>
+    <script src="https://webapi.amap.com/js/marker.js"></script>
+    <script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
+    @*<script src="~/Content/js/fengmap.min.js"></script>*@
 </head>
 <body>
     <section class="app-main">
         <section class="screen-four">
             <div class="box">
-                <button class="roll-nav roll-right fullscreen" style="float:right;"><i class="fa fa-arrows-alt"></i></button>
-                <div class="box-container">
+                <div id="container">
+                    <div tabindex="0"></div>
+                </div>
+            </div>
+            <div class="box">
+                @*<div class="box-container">
+                            <ul class="nav nav-tabs">
+                                <li><a href="#" data-toggle="tab">室内地图</a></li>
+                                <li><a href="#" data-toggle="tab">设备管理</a></li>
+                            </ul>
+                    </div>*@
 
-                </div>
             </div>
             <div class="box">
                 <button class="roll-nav roll-right fullscreen" style="float:right;"><i class="fa fa-arrows-alt"></i></button>
                 <div class="box-container">
                     <ul class="nav nav-tabs">
-                        <li><a href="#identifier" data-toggle="tab">室内地图</a></li>
-                        <li><a href="#identifier" data-toggle="tab">设备管理</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="box">
-                <button class="roll-nav roll-right fullscreen" style="float:right;"><i class="fa fa-arrows-alt"></i></button>
-                <div class="box-container">
-                    <ul class="nav nav-tabs">
-                        <li><a href="#identifier" data-toggle="tab">实时警情</a></li>
-                        <li><a href="#identifier" data-toggle="tab">警情处理</a></li>
-                        <li><a href="#identifier" data-toggle="tab">实时数据</a></li>
-                        <li><a href="#identifier" data-toggle="tab">异常处理</a></li>
+                        <li><a href="#" data-toggle="tab">实时警情</a></li>
+                        <li><a href="#" data-toggle="tab">警情处理</a></li>
+                        <li><a href="#" data-toggle="tab">实时数据</a></li>
+                        <li><a href="#" data-toggle="tab">异常处理</a></li>
                     </ul>
                 </div>
             </div>
@@ -52,12 +57,117 @@
                             无视频
                         </div>
                     </div>
-                  
+
                 </div>
             </div>
         </section>
     </section>
-    <style>
+    <script type="text/javascript">
+
+        var map = new AMap.Map('container', { resizeEnable: true, zoom: 13, center: [117.164882, 31.856202] });
+
+        map.on("complete", completeEventHandler);
+        // 地图图块加载完毕后执行函数
+        function completeEventHandler() {
+
+            var lineArr = [];
+            //lineArr.push([117.111415, 31.857183]);
+            //lineArr.push([117.124882, 31.856202]);
+            //lineArr.push([117.119113, 31.860104]);
+            //lineArr.push([117.119113, 31.860468]);
+            //lineArr.push([117.119127, 31.860281]);
+            //lineArr.push([117.118974, 31.860281]);
+            lineArr.push([117.164882, 31.856202]);
+            //lineArr.push([117.191903, 31.825772]);
+            //lineArr.push([117.227548, 31.820372]);
+            //lineArr.push([117.239621, 31.791895]);
+            AMapUI.loadUI(['overlay/SimpleInfoWindow'], function (SimpleInfoWindow) {
+
+                for (var i = 0; i < lineArr.length; i++) {
+                    var infoWindow = new SimpleInfoWindow({
+
+                        infoTitle: '<strong>这里是标题</strong>',
+                        infoBody: '<p class="my-desc"><strong>这里是内容。</strong> <br/> 高德地图 JavaScript API，是由 JavaScript 语言编写的应用程序接口，' +
+                        '它能够帮助您在网站或移动端中构建功能丰富、交互性强的地图应用程序</p>',
+                        //基点指向marker的头部位置
+                        offset: new AMap.Pixel(0, -31)
+                    });
+                    var title = "合肥市第" + (i + 1) + "中学";
+                    var marker = new AMap.Marker({
+                        map: map,
+                        position: lineArr[i],
+                        offset: new AMap.Pixel(-26, -13),
+                        title: title
+                    });
+
+                    // 自定义点标记内容
+                    var markerContent = document.createElement("div");
+
+                    // 点标记中的图标
+                    var markerImg = document.createElement("img");
+                    markerImg.className = "markerlnglat";
+                    markerImg.src = "http://webapi.amap.com/theme/v1.3/markers/n/mark_r.png";
+                    markerContent.appendChild(markerImg);
+
+                    // 点标记中的文本
+                    var markerSpan = document.createElement("span");
+                    markerSpan.className = 'marker';
+                    markerSpan.innerHTML = title;
+                    markerContent.appendChild(markerSpan);
+
+                    marker.setContent(markerContent); //更新点标记内容
+
+
+                    function openInfoWin(m) {
+
+
+                        infoWindow.setContent("<div style='background:white;width:200px;height:110px;padding:2px;'><p style='background:skyblue;'><strong>" + m.getTitle() + "</strong></p><p>单位名称：" + m.getTitle() + "</p><p>单位类型：主体单位</p><p>单位地址:" + m.getTitle() + " </p> </div>");
+
+                        infoWindow.open(map, m.getPosition());
+                    }
+
+                    marker.on("click", function () {
+
+                        openInfoWin(this);
+                    });
+                    openInfoWin(marker);
+                }
+
+
+            });
+            map.setFitView();
+
+        }
+
+    </script>
+
+    <style type="text/css">
+        body, html, #container {
+            height: 100%;
+            margin: 0px;
+            font: 12px Arial;
+        }
+
+        .circle {
+            border-radius: 6px;
+            border: solid 1px silver;
+            width: 40px;
+            padding: 1px;
+            font-size: 9px;
+            text-align: center;
+            color: white;
+        }
+
+        .marker {
+            color: white;
+            padding: 4px 10px;
+            border: 1px solid #fff;
+            white-space: nowrap;
+            font-size: 12px;
+            background-color: #0066ff;
+        }
+
+
         .video-container {
             height: 100%;
             width: 100%;
