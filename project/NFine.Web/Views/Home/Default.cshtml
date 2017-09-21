@@ -34,7 +34,6 @@
                                 <li><a href="#" data-toggle="tab">设备管理</a></li>
                             </ul>
                     </div>*@
-
                 <div id="fengMap"></div>
             </div>
             <div class="box">
@@ -146,7 +145,7 @@
         document.title = '楼层切换V' + fengmap.VERSION;
 
         //定义全局map变量
-        var map;
+        var fmap;
         var fmapID = '10347';
         var groupControl;
 
@@ -165,7 +164,7 @@
                     y: 10
                 }
             });
-            map = new fengmap.FMMap({
+            fmap = new fengmap.FMMap({
                 //渲染dom
                 container: document.getElementById('fengMap'),
                 //地图数据位置
@@ -187,12 +186,12 @@
             });
 
             //打开Fengmap服务器的地图数据和主题
-            map.openMapById(fmapID);
+            fmap.openMapById(fmapID);
 
             //地图加载完成回掉方法
-            map.on('loadComplete', function () {
+            fmap.on('loadComplete', function () {
                 //创建楼层(按钮型)，创建时请在地图加载后(loadComplete回调)创建。
-                groupControl = new fengmap.scrollGroupsControl(map, ctlOpt);
+                groupControl = new fengmap.scrollGroupsControl(fmap, ctlOpt);
 
                 //通过楼层切换控件切换聚焦楼层时的回调函数
                 //groupContro 即为楼层控件对象
@@ -209,6 +208,7 @@
             margin: 0px;
             font: 12px Arial;
         }
+
         #fengMap {
             width: 100%;
             height: 100%;
