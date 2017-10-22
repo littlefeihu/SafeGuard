@@ -1,0 +1,20 @@
+﻿/*******************************************************************************
+ * Copyright © 2016 分享智慧版权所有
+ * Author: Allen
+ * 分享智慧
+ * 
+*********************************************************************************/
+
+namespace AFX.Code
+{
+    public class TreeGridModel
+    {
+        public string id { get; set; }
+        public string parentId { get; set; }
+        public string text { get; set; }
+        public bool isLeaf { get; set; }
+        public bool expanded { get; set; }
+        public bool loaded { get; set; }
+        public string entityJson { get; set; }
+    }
+}

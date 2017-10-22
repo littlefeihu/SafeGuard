@@ -1,0 +1,560 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <link href="~/Content/css/framework-font.css" rel="stylesheet" />
+    <link href="~/Content/css/framework-ui.css" rel="stylesheet" />
+    <script src="~/Content/js/jquery/jquery-2.1.1.min.js"></script>
+    <link href="~/Content/css/framework-theme.css" rel="stylesheet" />
+    <link href="~/Content/js/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/framework-theme.css" rel="stylesheet" />
+    <script src="~/Content/js/charts/Chart.js"></script>
+
+    <script type="text/javascript" src='http://webapi.amap.com/maps?v=1.3&key=e3d56420c12fec25b36199d832d7aa25'></script>
+    <!-- UI组件库 1.0 -->
+    <script src="http://webapi.amap.com/ui/1.0/main.js"></script>
+    <script src="https://webapi.amap.com/js/marker.js"></script>
+    <script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
+    <script src="/Content/js/fengmap.min.js"></script>
+</head>
+<body>
+    <section class="app-main">
+        <section class="screen-four">
+            <div class="box">
+                <div id="container">
+                    <div tabindex="0"></div>
+                </div>
+            </div>
+            <div class="box">
+                @*<div class="box-container">
+                            <ul class="nav nav-tabs">
+                                <li><a href="#" data-toggle="tab">室内地图</a></li>
+                                <li><a href="#" data-toggle="tab">设备管理</a></li>
+                            </ul>
+                    </div>*@
+
+                <div id="fengMap"></div>
+            </div>
+            <div class="box">
+                <button class="roll-nav roll-right fullscreen" style="float:right;"><i class="fa fa-arrows-alt"></i></button>
+                <div class="box-container">
+                    <ul class="nav nav-tabs">
+                        <li><a href="#" data-toggle="tab">实时警情</a></li>
+                        <li><a href="#" data-toggle="tab">警情处理</a></li>
+                        <li><a href="#" data-toggle="tab">实时数据</a></li>
+                        <li><a href="#" data-toggle="tab">异常处理</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="box">
+                <div class="box-container">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">监控区</h3>
+                        </div>
+                        <div class="panel-body">
+                            无视频
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </section>
+    <script type="text/javascript">
+
+        var map = new AMap.Map('container', { resizeEnable: true, zoom: 13, center: [117.164882, 31.856202] });
+
+        map.on("complete", completeEventHandler);
+        // 地图图块加载完毕后执行函数
+        function completeEventHandler() {
+
+            var lineArr = [];
+            //lineArr.push([117.111415, 31.857183]);
+            //lineArr.push([117.124882, 31.856202]);
+            //lineArr.push([117.119113, 31.860104]);
+            //lineArr.push([117.119113, 31.860468]);
+            //lineArr.push([117.119127, 31.860281]);
+            //lineArr.push([117.118974, 31.860281]);
+            lineArr.push([117.164882, 31.856202]);
+            //lineArr.push([117.191903, 31.825772]);
+            //lineArr.push([117.227548, 31.820372]);
+            //lineArr.push([117.239621, 31.791895]);
+            AMapUI.loadUI(['overlay/SimpleInfoWindow'], function (SimpleInfoWindow) {
+
+                for (var i = 0; i < lineArr.length; i++) {
+                    var infoWindow = new SimpleInfoWindow({
+
+                        infoTitle: '<strong>这里是标题</strong>',
+                        infoBody: '<p class="my-desc"><strong>这里是内容。</strong> <br/> 高德地图 JavaScript API，是由 JavaScript 语言编写的应用程序接口，' +
+                        '它能够帮助您在网站或移动端中构建功能丰富、交互性强的地图应用程序</p>',
+                        //基点指向marker的头部位置
+                        offset: new AMap.Pixel(0, -31)
+                    });
+                    var title = "合肥市第" + (i + 1) + "中学";
+                    var marker = new AMap.Marker({
+                        map: map,
+                        position: lineArr[i],
+                        offset: new AMap.Pixel(-26, -13),
+                        title: title
+                    });
+
+                    // 自定义点标记内容
+                    var markerContent = document.createElement("div");
+
+                    // 点标记中的图标
+                    var markerImg = document.createElement("img");
+                    markerImg.className = "markerlnglat";
+                    markerImg.src = "http://webapi.amap.com/theme/v1.3/markers/n/mark_r.png";
+                    markerContent.appendChild(markerImg);
+
+                    // 点标记中的文本
+                    var markerSpan = document.createElement("span");
+                    markerSpan.className = 'marker';
+                    markerSpan.innerHTML = title;
+                    markerContent.appendChild(markerSpan);
+
+                    marker.setContent(markerContent); //更新点标记内容
+
+
+                    function openInfoWin(m) {
+
+
+                        infoWindow.setContent("<div style='background:white;width:200px;height:110px;padding:2px;'><p style='background:skyblue;'><strong>" + m.getTitle() + "</strong></p><p>单位名称：" + m.getTitle() + "</p><p>单位类型：主体单位</p><p>单位地址:" + m.getTitle() + " </p> </div>");
+
+                        infoWindow.open(map, m.getPosition());
+                    }
+
+                    marker.on("click", function () {
+
+                        openInfoWin(this);
+                    });
+                    openInfoWin(marker);
+                }
+
+
+            });
+            map.setFitView();
+
+        }
+
+    </script>
+    <script>
+        //获取版本号,设置title
+        document.title = '楼层切换V' + fengmap.VERSION;
+
+        //定义全局map变量
+        var map;
+        var fmapID = '10347';
+        var groupControl;
+
+        window.onload = function () {
+            //楼层控制控件配置参数
+            var ctlOpt = new fengmap.controlOptions({
+                //默认在右上角
+                position: fengmap.controlPositon.RIGHT_TOP,
+                //默认显示楼层的个数
+                showBtnCount: 7,
+                //初始是否是多层显示，默认单层显示
+                allLayer: false,
+                //位置x,y的偏移量
+                offset: {
+                    x: 20,
+                    y: 10
+                }
+            });
+            map = new fengmap.FMMap({
+                //渲染dom
+                container: document.getElementById('fengMap'),
+                //地图数据位置
+                mapServerURL: '/Content/data/' + fmapID,
+                //主题数据位置
+                mapThemeURL: '/Content/data/theme',
+                //设置主题
+                defaultThemeName: '3007',
+                // 默认比例尺级别设置为20级
+                defaultMapScaleLevel: 20,
+                //是否对不可见图层启用透明设置 默认为true
+                focusAlphaMode: false,
+                //对不聚焦图层启用透明设置，当focusAlphaMode = true时有效
+                focusAlpha: 0.1,
+                //开发者申请应用下web服务的key
+                key: 'adda7aa03da92158d64d7eecf0bf9a21',
+                //开发者申请应用名称
+                appName: '开发',
+            });
+
+            //打开Fengmap服务器的地图数据和主题
+            map.openMapById(fmapID);
+
+            //地图加载完成回掉方法
+            map.on('loadComplete', function () {
+                //创建楼层(按钮型)，创建时请在地图加载后(loadComplete回调)创建。
+                groupControl = new fengmap.scrollGroupsControl(map, ctlOpt);
+
+                //通过楼层切换控件切换聚焦楼层时的回调函数
+                //groupContro 即为楼层控件对象
+                groupControl.onChange(function (groups, allLayer) {
+                    //groups 表示当前要切换的楼层ID数组,
+                    //allLayer表示当前楼层是单层状态还是多层状态。
+                });
+            });
+        };
+    </script>
+    <style type="text/css">
+        body, html, #container {
+            height: 100%;
+            margin: 0px;
+            font: 12px Arial;
+        }
+        #fengMap {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            overflow: hidden;
+        }
+
+        .circle {
+            border-radius: 6px;
+            border: solid 1px silver;
+            width: 40px;
+            padding: 1px;
+            font-size: 9px;
+            text-align: center;
+            color: white;
+        }
+
+        .marker {
+            color: white;
+            padding: 4px 10px;
+            border: 1px solid #fff;
+            white-space: nowrap;
+            font-size: 12px;
+            background-color: #0066ff;
+        }
+
+
+        .video-container {
+            height: 100%;
+            width: 100%;
+        }
+
+        .box-container .tabs-container .el-tabs__header {
+            margin: 0;
+        }
+
+        .video-container .title {
+            background-color: #f0f0f0;
+            height: 43px;
+            width: 100%;
+        }
+
+            .video-container .title .text {
+                color: #20a0ff;
+                font-size: 16px;
+                line-height: 43px;
+                margin-left: 10px;
+            }
+
+            .video-container .title .show-single {
+                cursor: pointer;
+                float: right;
+                height: 23px;
+                margin: 10px 70px 0 0;
+                width: 23px;
+            }
+
+            .video-container .title .auto-switch {
+                cursor: pointer;
+                float: right;
+                height: 23px;
+                margin: 10px 35px 0 0;
+                width: 23px;
+            }
+
+        .video-container .video-play, .video-container .video-play .body {
+            height: calc(100% - 43px);
+            width: 100%;
+        }
+
+            .video-container .video-play .body {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .video-container .video-play, .video-container .video-play .body {
+                height: calc(100% - 43px);
+                width: 100%;
+            }
+
+                .video-container .video-play .body .des {
+                    align-items: center;
+                    display: flex;
+                    flex-direction: column;
+                    height: 100%;
+                    justify-content: center;
+                    width: 100%;
+                }
+
+                    .video-container .video-play .body .des .el-icon-warning {
+                        color: #8492a6;
+                        font-size: 64px;
+                    }
+
+        [class*=" el-icon-"], [class^="el-icon-"] {
+            display: inline-block;
+            font-family: element-icons;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: 400;
+            line-height: 1;
+            text-transform: none;
+            vertical-align: baseline;
+        }
+
+        .video-container .video-play .footer {
+            background-color: #f0f0f0;
+            height: 43px;
+            width: 100%;
+        }
+
+        .el-pagination::after, .el-pagination::before {
+            content: "";
+            display: table;
+        }
+
+        .el-pagination button.disabled {
+            background-color: #fff;
+            color: #e4e4e4;
+            cursor: not-allowed;
+        }
+
+        .el-pagination .btn-prev {
+            border-radius: 2px 0 0 2px;
+            border-right: 0 none;
+        }
+
+        .el-pagination .btn-next, .el-pagination .btn-prev {
+            background: #fff none no-repeat scroll 50% center / 16px auto;
+            border: 1px solid #d1dbe5;
+            color: #97a8be;
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .el-pagination button {
+            background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+            border: medium none;
+            padding: 0 6px;
+        }
+
+        .el-pagination button, .el-pagination span {
+            box-sizing: border-box;
+            display: inline-block;
+            font-size: 13px;
+            height: 28px;
+            line-height: 28px;
+            min-width: 28px;
+            vertical-align: top;
+        }
+
+        button, html input[type="button"], input[type="reset"], input[type="submit"] {
+            cursor: pointer;
+        }
+
+        button, select {
+            text-transform: none;
+        }
+
+        button {
+            overflow: visible;
+        }
+
+        .el-pagination .btn-next .el-icon, .el-pagination .btn-prev .el-icon {
+            display: block;
+            font-size: 12px;
+        }
+
+        [class*=" el-icon-"], [class^="el-icon-"] {
+            display: inline-block;
+            font-family: element-icons;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: 400;
+            line-height: 1;
+            text-transform: none;
+            vertical-align: baseline;
+        }
+
+        .el-date-table, .el-pager, .el-radio {
+            -moz-user-select: none;
+        }
+
+        .el-pager {
+            -moz-user-select: none;
+            font-size: 0;
+            list-style: outside none none;
+            padding: 0;
+        }
+
+            .el-pager, .el-pager li {
+                display: inline-block;
+                margin: 0;
+                vertical-align: top;
+            }
+
+        .box button {
+            background: #fff none repeat scroll 0 0;
+            border: 0 none;
+            height: 39px;
+            line-height: 39px;
+            outline: 0 none;
+            width: 40px;
+        }
+
+        .screen-four .box {
+            background-color: #fff;
+            border-color: #fff;
+            border-radius: 0;
+            border-width: 1px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            height: calc(50% - 6px);
+            margin-bottom: 6px;
+            margin-right: 6px;
+            position: relative;
+            width: calc(50% - 6px);
+        }
+
+
+        .screen-four {
+            background-color: #ccc;
+            display: flex;
+            flex-wrap: wrap;
+            height: 100%;
+            overflow: hidden;
+            padding: 6px 0 0 6px;
+            width: 100%;
+        }
+
+        .app-main {
+            height: calc(100vh - 10px);
+            overflow-x: hidden;
+            overflow-y: auto;
+            width: 100%;
+        }
+
+        section {
+            display: block;
+        }
+
+        #copyrightcontent {
+            height: 30px;
+            line-height: 29px;
+            overflow: hidden;
+            position: absolute;
+            top: 100%;
+            margin-top: -30px;
+            width: 100%;
+            background-color: #fff;
+            border: 1px solid #e6e6e6;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .dashboard-stats {
+            float: left;
+            width: 20%;
+        }
+
+        .dashboard-stats-item {
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+            cursor: pointer;
+            height: 105px;
+            margin-right: 25px;
+            margin-bottom: 10px;
+            padding: 20px 20px;
+        }
+
+            .dashboard-stats-item .m-top-none {
+                margin-top: 2px;
+            }
+
+            .dashboard-stats-item h2 {
+                font-size: 35px;
+                font-family: inherit;
+                line-height: 1.1;
+                font-weight: 500;
+            }
+
+            .dashboard-stats-item h5 {
+                font-size: 14px;
+                font-family: inherit;
+                margin-top: 3px;
+                line-height: 1.1;
+            }
+
+
+            .dashboard-stats-item .stat-icon {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 30px;
+                opacity: .3;
+            }
+
+        .dashboard-stats i.fa.stats-icon {
+            width: 50px;
+            padding: 20px;
+            font-size: 50px;
+            text-align: center;
+            color: #fff;
+            height: 50px;
+            border-radius: 10px;
+        }
+
+        .panel-default {
+            border: none;
+            border-radius: 0px;
+            margin-bottom: 0px;
+            box-shadow: none;
+            -webkit-box-shadow: none;
+        }
+
+            .panel-default > .panel-heading {
+                color: #777;
+                background-color: #fff;
+                border-color: #e6e6e6;
+                padding: 10px 10px;
+            }
+
+            .panel-default > .panel-body {
+                padding: 10px;
+                padding-bottom: 0px;
+            }
+
+                .panel-default > .panel-body ul {
+                    overflow: hidden;
+                    padding: 0;
+                    margin: 0px;
+                    margin-top: -5px;
+                }
+
+                    .panel-default > .panel-body ul li {
+                        line-height: 27px;
+                        list-style-type: none;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
+
+                        .panel-default > .panel-body ul li .time {
+                            color: #a1a1a1;
+                            float: right;
+                            padding-right: 5px;
+                        }
+    </style>
+</body>
+</html>
