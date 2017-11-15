@@ -384,6 +384,8 @@
     <Content Include="Content\js\zsign\jquery.zsign.css" />
     <Content Include="Content\js\zsign\jquery.zsign.js" />
     <Content Include="Content\js\zsign\signet.gif" />
+    <Content Include="Content\QQ截图20171116062323.png" />
+    <Content Include="Content\QQ截图20171116062536.png" />
     <Content Include="Global.asax" />
     <Content Include="Index.htm" />
     <Content Include="Resource\style\wedgets\img\2D.png" />

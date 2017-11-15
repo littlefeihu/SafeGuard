@@ -8,7 +8,7 @@ namespace AFX.Web.Areas.SystemManage
         {
             get
             {
-                return "Manage";
+                return "SystemManage";
             }
         }
 

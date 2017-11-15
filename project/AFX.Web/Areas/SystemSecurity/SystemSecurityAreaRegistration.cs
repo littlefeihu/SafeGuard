@@ -8,7 +8,7 @@ namespace AFX.Web.Areas.SystemSecurity
         {
             get
             {
-                return "Security";
+                return "SystemSecurity";
             }
         }
 

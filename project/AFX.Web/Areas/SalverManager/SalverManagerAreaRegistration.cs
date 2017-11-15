@@ -8,7 +8,7 @@ namespace AFX.Web.Areas.SalverManager
         {
             get
             {
-                return "Salver";
+                return "SalverManager";
             }
         }
 
