@@ -144,9 +144,20 @@
     <Compile Include="Areas\SystemSecurity\Controllers\LogController.cs" />
     <Compile Include="Areas\SystemSecurity\Controllers\ServerMonitoringController.cs" />
     <Compile Include="Areas\SystemSecurity\SystemSecurityAreaRegistration.cs" />
+    <Compile Include="Controllers\AnalyzeController.cs" />
     <Compile Include="Controllers\ClientsDataController.cs" />
+    <Compile Include="Controllers\DeviceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MaintenanceController.cs" />
+    <Compile Include="Controllers\MessageCenterController.cs" />
+    <Compile Include="Controllers\NetworkingController.cs" />
+    <Compile Include="Controllers\OnGuardController.cs" />
+    <Compile Include="Controllers\PatrolController.cs" />
+    <Compile Include="Controllers\PeopleController.cs" />
+    <Compile Include="Controllers\RealTimeMonitorController.cs" />
+    <Compile Include="Controllers\VehicleController.cs" />
+    <Compile Include="Controllers\WarningInstanceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -155,6 +166,23 @@
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Content Include="Content\1.png" />
+    <Content Include="Content\11.png" />
+    <Content Include="Content\12.png" />
+    <Content Include="Content\13.png" />
+    <Content Include="Content\14.png" />
+    <Content Include="Content\15.png" />
+    <Content Include="Content\16.png" />
+    <Content Include="Content\17.png" />
+    <Content Include="Content\18.png" />
+    <Content Include="Content\19.png" />
+    <Content Include="Content\2.png" />
+    <Content Include="Content\20.png" />
+    <Content Include="Content\3.png" />
+    <Content Include="Content\4.png" />
+    <Content Include="Content\5.png" />
+    <Content Include="Content\6.png" />
+    <Content Include="Content\7.png" />
     <Content Include="Content\css\framework-font.css" />
     <Content Include="Content\css\framework-ui.css" />
     <Content Include="Content\css\framework-login.css" />
@@ -584,6 +612,7 @@
     <Content Include="Areas\ReportManage\Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\PatrolManage\" />
     <Folder Include="Areas\ReportManage\Views\Echarts\" />
   </ItemGroup>
   <ItemGroup>
@@ -1089,6 +1118,72 @@
     <Content Include="Resource\DbBackup\201607190929504502.bak" />
     <Content Include="Resource\DbBackup\201707101536225112.bak" />
     <Content Include="Resource\DbBackup\201707101536436664.bak" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Patrol\PatrolResult.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Patrol\PatrolTasks.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Patrol\CreatePatrolTask.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Maintenance\MaintenanceResult.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Maintenance\MaintenanceTasks.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Maintenance\CreateMaintenanceTask.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Device\DeviceList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\People\PeopleList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Vehicle\VehicleList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Patrol\ScanPatrolTask.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Maintenance\ScanMaintenanceTask.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Maintenance\ScanMaintenanceResult.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Patrol\ScanPatrolResult.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\RealTimeMonitor\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\RealTimeMonitor\HandleException.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MessageCenter\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OnGuard\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\WarningInstance\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Analyze\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Networking\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Networking\RealtimeScan.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
