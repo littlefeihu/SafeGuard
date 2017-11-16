@@ -10,7 +10,7 @@
     function gridList() {
         var $gridList = $("#gridList");
         $gridList.dataGrid({
-            url: "/Patrol/GetGridJson",
+            url: "/Maintenance/GetGridJson",
             height: $(window).height() - 128,
             colModel: [
                 { label: '任务名称', name: '任务名称', width: 200, align: 'left' },
@@ -50,8 +50,8 @@
             id: "Form",
             title: "查看维保任务",
             url: "/Maintenance/ScanMaintenanceTask",
-            width: "700px",
-            height: "510px",
+            width: "1000px",
+            height: "810px",
             callBack: function (iframeId) {
                 top.frames[iframeId].submitForm();
             }
@@ -62,9 +62,9 @@
         $.modalOpen({
             id: "Form",
             title: "查看维保结果",
-            url: "/Maintenance/ScanMaintenanceResult.cshtml",
-            width: "700px",
-            height: "510px",
+            url: "/Maintenance/ScanMaintenanceResult",
+            width: "1000px",
+            height: "810px",
             callBack: function (iframeId) {
                 top.frames[iframeId].submitForm();
             }
