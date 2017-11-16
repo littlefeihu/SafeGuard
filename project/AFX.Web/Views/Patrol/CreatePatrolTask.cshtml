@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+
+<form id="form1">
+    <div style="margin-top: 10px; margin-left: 10px; margin-right: 10px;">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#">新增任务</a></li>
+            @*<li ><a href="#">扩展信息</a></li>*@
+        </ul>
+        <div style="padding-top: 20px; margin-right: 30px;">
+            <table class="form">
+                <tr>
+                    <th class="formTitle">任务名称</th>
+                    <td class="formValue" colspan="3">
+                        <input id="F_WarehouseName" name="F_WarehouseName" type="text" class="form-control" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <th class="formTitle" valign="top" style="padding-top: 5px;">
+                        任务描述
+                    </th>
+                    <td class="formValue" colspan="3">
+                        <textarea id="F_Remark" name="F_Remark" class="form-control" style="height: 60px;"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="formTitle">任务来源</th>
+                    <td class="formValue" colspan="3">
+                        <select class="form-control">
+                            <option>巡查结果</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="formTitle">任务类型</th>
+                    <td class="formValue" colspan="3">
+                        <select class="form-control">
+                            <option>单次</option>
+                            <option>定期</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</form>
