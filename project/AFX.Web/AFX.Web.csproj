@@ -866,7 +866,6 @@
     <Content Include="Content\data\theme\2002\180005.fmi" />
     <Content Include="Content\data\theme\2002\2002.json" />
     <Content Include="Content\data\theme\2002\2002.theme" />
-    <Content Include="Content\data\theme\3007\.DS_Store" />
     <Content Include="Content\data\theme\3007\0.fmi" />
     <Content Include="Content\data\theme\3007\100001.fmi" />
     <Content Include="Content\data\theme\3007\100002.fmi" />
