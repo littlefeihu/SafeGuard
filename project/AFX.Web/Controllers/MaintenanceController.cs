@@ -22,7 +22,10 @@ namespace NFX.Web.Controllers
         {
             return View();
         }
-
+        public ActionResult MaintenanceTasks1()
+        {
+            return View();
+        }
         public ActionResult CreateMaintenanceTask()
         {
             return View();
