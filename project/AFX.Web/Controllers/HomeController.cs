@@ -32,5 +32,11 @@ namespace AFX.Web.Controllers
         {
             return View();
         }
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult Metro()
+        {
+            return View();
+        }
     }
 }
