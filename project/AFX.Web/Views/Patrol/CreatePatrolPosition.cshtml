@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+
+<form id="form1">
+    <div style="margin-top: 10px; margin-left: 10px; margin-right: 10px;">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#">新增点位信息</a></li>
+            @*<li ><a href="#">扩展信息</a></li>*@
+        </ul>
+        <div style="padding-top: 20px; margin-right: 30px;">
+            <table class="form">
+                <tr>
+                    <th class="formTitle">点位名称</th>
+                    <td class="formValue" colspan="3">
+                        <input id="F_WarehouseName" name="F_WarehouseName" type="text" class="form-control" />
+                    </td>
+                </tr>
+        
+                <tr>
+                    <th class="formTitle" valign="top" style="padding-top: 5px;">
+                        备注
+                    </th>
+                    <td class="formValue" colspan="3">
+                        <textarea id="F_Remark" name="F_Remark" class="form-control" style="height: 60px;"></textarea>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</form>
