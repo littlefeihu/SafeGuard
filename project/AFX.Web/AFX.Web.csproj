@@ -144,9 +144,20 @@
     <Compile Include="Areas\SystemSecurity\Controllers\LogController.cs" />
     <Compile Include="Areas\SystemSecurity\Controllers\ServerMonitoringController.cs" />
     <Compile Include="Areas\SystemSecurity\SystemSecurityAreaRegistration.cs" />
+    <Compile Include="Controllers\AnalyzeController.cs" />
     <Compile Include="Controllers\ClientsDataController.cs" />
+    <Compile Include="Controllers\DeviceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MaintenanceController.cs" />
+    <Compile Include="Controllers\MessageCenterController.cs" />
+    <Compile Include="Controllers\NetworkingController.cs" />
+    <Compile Include="Controllers\OnGuardController.cs" />
+    <Compile Include="Controllers\PatrolController.cs" />
+    <Compile Include="Controllers\PeopleController.cs" />
+    <Compile Include="Controllers\RealTimeMonitorController.cs" />
+    <Compile Include="Controllers\VehicleController.cs" />
+    <Compile Include="Controllers\WarningInstanceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1090,6 +1101,35 @@
     <Content Include="Resource\DbBackup\201607190929504502.bak" />
     <Content Include="Resource\DbBackup\201707101536225112.bak" />
     <Content Include="Resource\DbBackup\201707101536436664.bak" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Analyze\Index.cshtml" />
+    <Content Include="Views\Device\DeviceList.cshtml" />
+    <Content Include="Views\Maintenance\CreateMaintenanceTask.cshtml" />
+    <Content Include="Views\Maintenance\MaintenanceResult.cshtml" />
+    <Content Include="Views\Maintenance\MaintenanceTasks.cshtml" />
+    <Content Include="Views\Maintenance\ScanMaintenanceResult.cshtml" />
+    <Content Include="Views\Maintenance\ScanMaintenanceTask.cshtml" />
+    <Content Include="Views\MessageCenter\Index.cshtml" />
+    <Content Include="Views\Networking\Index.cshtml" />
+    <Content Include="Views\Networking\RealtimeScan.cshtml" />
+    <Content Include="Views\OnGuard\Index.cshtml" />
+    <Content Include="Views\Patrol\CreatePatrolPosition.cshtml" />
+    <Content Include="Views\Patrol\CreatePatrolTask.cshtml" />
+    <Content Include="Views\Patrol\PatrolPosition.cshtml" />
+    <Content Include="Views\Patrol\PatrolResult.cshtml" />
+    <Content Include="Views\Patrol\PatrolTasks.cshtml" />
+    <Content Include="Views\Patrol\ScanPatrolPosition.cshtml" />
+    <Content Include="Views\Patrol\ScanPatrolResult.cshtml" />
+    <Content Include="Views\Patrol\ScanPatrolTask.cshtml" />
+    <Content Include="Views\People\PeopleList.cshtml" />
+    <Content Include="Views\RealTimeMonitor\HandleException.cshtml" />
+    <Content Include="Views\RealTimeMonitor\Index.cshtml" />
+    <Content Include="Views\Vehicle\VehicleList.cshtml" />
+    <Content Include="Views\WarningInstance\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Maintenance\HandleMaintenanceTask.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
