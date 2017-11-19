@@ -19,6 +19,31 @@ namespace NFX.Web.Controllers
         {
             return View();
         }
+        /// <summary>
+        /// 警情监测
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult WarningConditionMonitor()
+        {
+            return View();
+        }
+        /// <summary>
+        /// 消防水检测
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult FireFightingWaterMonitor()
+        {
+            return View();
+        }
+        /// <summary>
+        /// 电气检测
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ElectricalMonitor()
+        {
+            return View();
+        }
+
 
     }
 }

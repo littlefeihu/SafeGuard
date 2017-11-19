@@ -181,6 +181,9 @@
     <Content Include="Content\3.png" />
     <Content Include="Content\31.jpg" />
     <Content Include="Content\4.png" />
+    <Content Include="Content\41.png" />
+    <Content Include="Content\42.png" />
+    <Content Include="Content\43.png" />
     <Content Include="Content\5.png" />
     <Content Include="Content\6.png" />
     <Content Include="Content\7.png" />
@@ -1301,6 +1304,9 @@
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <Content Include="Views\Home\Metro.cshtml" />
     <Content Include="scripts\README.md" />
+    <Content Include="Views\RealTimeMonitor\WarningConditionMonitor.cshtml" />
+    <Content Include="Views\RealTimeMonitor\FireFightingWaterMonitor.cshtml" />
+    <Content Include="Views\RealTimeMonitor\ElectricalMonitor.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
