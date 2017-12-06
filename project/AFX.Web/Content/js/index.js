@@ -153,24 +153,51 @@ $(function ($) {
 function GetLoadNav() {
     var data = top.clients.authorizeMenu;
     var _html = "";
+    //$.each(data, function (i) {
+    //    var row = data[i];
+    //    if (row.F_ParentId == "0") {
+    //        _html += '<li>';
+    //        _html += '<a data-id="' + row.F_Id + '" href="#" class="dropdown-toggle"><i class="' + row.F_Icon + '"></i><span>' + row.F_FullName + '</span><i class="fa fa-angle-right drop-icon"></i></a>';
+    //        var childNodes = row.ChildNodes;
+    //        if (childNodes.length > 0) {
+    //            _html += '<ul class="submenu">';
+    //            $.each(childNodes, function (i) {
+    //                var subrow = childNodes[i];
+    //                _html += '<li>';
+    //                _html += '<a class="menuItem" data-id="' + subrow.F_Id + '" href="' + subrow.F_UrlAddress + '" data-index="' + subrow.F_SortCode + '">' + subrow.F_FullName + '</a>';
+    //                _html += '</li>';
+    //            });
+    //            _html += '</ul>';
+    //        }
+    //        _html += '</li>';
+    //    }
+    //});
+
     $.each(data, function (i) {
         var row = data[i];
         if (row.F_ParentId == "0") {
-            _html += '<li>';
-            _html += '<a data-id="' + row.F_Id + '" href="#" class="dropdown-toggle"><i class="' + row.F_Icon + '"></i><span>' + row.F_FullName + '</span><i class="fa fa-angle-right drop-icon"></i></a>';
             var childNodes = row.ChildNodes;
             if (childNodes.length > 0) {
-                _html += '<ul class="submenu">';
+                _html += '<li class="tpl-left-nav-item">';
+                _html += '<a data-id="' + row.F_Id + '" href="' + row.F_UrlAddress + ' "class="nav-link active"><i class="' + row.F_Icon + '"></i><span>' + row.F_FullName + '</span> <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i></a>';
+                _html += '<ul class="tpl-left-nav-sub-menu">';
+                _html += '<li>';
                 $.each(childNodes, function (i) {
                     var subrow = childNodes[i];
-                    _html += '<li>';
-                    _html += '<a class="menuItem" data-id="' + subrow.F_Id + '" href="' + subrow.F_UrlAddress + '" data-index="' + subrow.F_SortCode + '">' + subrow.F_FullName + '</a>';
-                    _html += '</li>';
+                    _html += '<a data-id="' + subrow.F_Id + '" href="' + subrow.F_UrlAddress + ' "class="nav-link active"><i class="' + subrow.F_Icon + '"></i><span>' + subrow.F_FullName + '</span></a>';
                 });
+                _html += '</li>';
+
                 _html += '</ul>';
+                _html += '</li>';
             }
-            _html += '</li>';
+            else {
+                _html += '<li class="tpl-left-nav-item">';
+                _html += '<a data-id="' + row.F_Id + '" href="' + row.F_UrlAddress + ' "class="nav-link active"><i class="' + row.F_Icon + '"></i><span>' + row.F_FullName + '</span></a>';
+                _html += '</li>';
+            }
         }
     });
+
     $("#sidebar-nav ul").prepend(_html);
 }

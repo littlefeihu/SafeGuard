@@ -42,9 +42,6 @@
                 <div class="row">
                     <button id="login_button" type="button"><span>登录</span></button>
                 </div>
-                <div class="row" style="text-align:right;margin-top:2px;">
-                    <a href="/Login/Join" >注册新账号</a>
-                </div>
             </form>
             <div class="login_tips"></div>
         </div>
@@ -99,7 +96,7 @@
                                 if (data.state == "success") {
                                     $("#login_button").find('span').html("登录成功，正在跳转...");
                                     window.setTimeout(function () {
-                                        window.location.href = "/Home/Metro";
+                                        window.location.href = "/Home/Index";
                                     }, 500);
                                 } else {
                                     $("#login_button").removeAttr('disabled').find('span').html("登录");
