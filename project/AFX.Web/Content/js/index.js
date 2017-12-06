@@ -159,12 +159,12 @@ function GetLoadNav() {
             var childNodes = row.ChildNodes;
             if (childNodes.length > 0) {
                 _html += '<li class="tpl-left-nav-item">';
-                _html += '<a data-id="' + row.F_Id + '" href="' + row.F_UrlAddress + ' "class="nav-link"><i class="' + row.F_Icon + '"></i><span>' + row.F_FullName + '</span> <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i></a>';
+                _html += '<a data-id="' + row.F_Id + '" href="javascript:;"  class="nav-link tpl-left-nav-link-list"><i class="' + row.F_Icon + '"> </i> <span>' + row.F_FullName + '</span> <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i></a>';
                 _html += '<ul class="tpl-left-nav-sub-menu">';
                 _html += '<li>';
                 $.each(childNodes, function (i) {
                     var subrow = childNodes[i];
-                    _html += '<a data-id="' + subrow.F_Id + '" href="' + subrow.F_UrlAddress + ' "class="nav-link active"><i class="' + subrow.F_Icon + '"></i><span>' + subrow.F_FullName + '</span></a>';
+                    _html += '<a data-id="' + subrow.F_Id + '" href="' + subrow.F_UrlAddress + '"><i class="' + subrow.F_Icon + '"> </i> <span>' + subrow.F_FullName + '</span></a>';
                 });
                 _html += '</li>';
 
@@ -173,11 +173,21 @@ function GetLoadNav() {
             }
             else {
                 _html += '<li class="tpl-left-nav-item">';
-                _html += '<a data-id="' + row.F_Id + '" href="' + row.F_UrlAddress + ' "class="nav-link"><i class="' + row.F_Icon + '"></i><span>' + row.F_FullName + '</span></a>';
+                _html += '<a data-id="' + row.F_Id + '" href="' + row.F_UrlAddress + ' "class="nav-link tpl-left-nav-link-list"> <i class="' + row.F_Icon + '"> </i>  <span>' + row.F_FullName + '</span></a>';
                 _html += '</li>';
             }
         }
     });
 
     $("#sidebar-nav ul").prepend(_html);
+    // ==========================
+    // 侧边导航下拉列表
+    // ==========================
+
+    $('.tpl-left-nav-link-list').on('click', function () {
+
+        $(this).siblings('.tpl-left-nav-sub-menu').slideToggle(80)
+            .end()
+            .find('.tpl-left-nav-more-ico').toggleClass('tpl-left-nav-more-ico-rotate');
+    });
 }
