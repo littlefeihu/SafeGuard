@@ -164,7 +164,7 @@ function GetLoadNav() {
                 _html += '<li>';
                 $.each(childNodes, function (i) {
                     var subrow = childNodes[i];
-                    _html += '<a data-id="' + subrow.F_Id + '" href="' + subrow.F_UrlAddress + '"><i class="' + subrow.F_Icon + '"> </i> <span>' + subrow.F_FullName + '</span></a>';
+                    _html += '<a target="mainiframe" data-id="' + subrow.F_Id + '" href="' + subrow.F_UrlAddress + '"><i class="' + subrow.F_Icon + '"> </i> <span>' + subrow.F_FullName + '</span></a>';
                 });
                 _html += '</li>';
 
@@ -173,7 +173,7 @@ function GetLoadNav() {
             }
             else {
                 _html += '<li class="tpl-left-nav-item">';
-                _html += '<a data-id="' + row.F_Id + '" href="' + row.F_UrlAddress + ' "class="nav-link tpl-left-nav-link-list"> <i class="' + row.F_Icon + '"> </i>  <span>' + row.F_FullName + '</span></a>';
+                _html += '<a  target="mainiframe"  data-id="' + row.F_Id + '" href="' + row.F_UrlAddress + ' "class="nav-link tpl-left-nav-link-list"> <i class="' + row.F_Icon + '"> </i>  <span>' + row.F_FullName + '</span></a>';
                 _html += '</li>';
             }
         }

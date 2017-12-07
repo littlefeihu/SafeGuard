@@ -163,17 +163,10 @@
         </div>
 
         <div class="tpl-content-wrapper">
-
-            <div class="content-iframe" style="background-color: #f9f9f9; overflow: hidden;">
-                <div class="mainContent" id="content-main" style="margin: 10px; margin-bottom: 0px; padding: 0;">
-                    <iframe class="NFine_iframe" width="100%" height="100%" src="" frameborder="0" data-id="/Home/Default"></iframe>
-                </div>
-            </div>
+            <iframe class="NFine_iframe" name="mainiframe" id="mainiframe" width="100%" height="100%" src="" style="padding: 0px; width: 100%;margin:0px;" scrolling="no" frameborder="0" data-id="/Home/Default"></iframe>
 
         </div>
-
     </div>
-
     <div id="loadingPage" style="display: none;">
         <div class="loading-shade"></div>
         <div class="loading-content" onclick="$.loading(false)">数据加载中，请稍后…</div>
@@ -191,6 +184,16 @@
             window.setTimeout(function () {
                 $('#ajax-loader').fadeOut();
             }, 300);
+        });
+
+        $("#mainiframe").load(function () {
+
+            var mainheight = $(this).contents().find("body").height() + 30;
+            var mainwidth = $(this).contents().find("body").width() + 30;
+
+            $(this).height(mainheight);
+            $(this).width(mainwidth);
+
         });
     </script>
 </body>
