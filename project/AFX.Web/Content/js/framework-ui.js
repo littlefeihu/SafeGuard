@@ -275,7 +275,7 @@ $.fn.jqGridRowValue = function () {
     if (selectedRowIds != "") {
         var json = [];
         var len = selectedRowIds.length;
-        for (var i = 0; i < len ; i++) {
+        for (var i = 0; i < len; i++) {
             var rowData = $grid.jqGrid('getRowData', selectedRowIds[i]);
             json.push(rowData);
         }
@@ -391,7 +391,7 @@ $.fn.bindSelect = function (options) {
     }
 }
 $.fn.authorizeButton = function () {
-    var moduleId = top.$(".NFine_iframe:visible").attr("id").substr(6);
+    var moduleId = top.$(".mainiframe:visible").attr("data-id").substr(6);
     var dataJson = top.clients.authorizeButton[moduleId];
     var $element = $(this);
     $element.find('a[authorize=yes]').attr('authorize', 'no');

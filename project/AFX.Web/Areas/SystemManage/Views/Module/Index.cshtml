@@ -5,7 +5,10 @@
 <script>
     $(function () {
         gridList();
-    })
+        $(window).resize(function () {
+            $("#gridList").setGridWidth($(this).width());
+        });
+    });
     function gridList() {
         var $gridList = $("#gridList");
         $gridList.dataGrid({

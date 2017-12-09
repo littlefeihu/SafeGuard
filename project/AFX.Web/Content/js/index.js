@@ -190,4 +190,9 @@ function GetLoadNav() {
             .end()
             .find('.tpl-left-nav-more-ico').toggleClass('tpl-left-nav-more-ico-rotate');
     });
+    $('.tpl-left-nav-link-list a').click(function (e) {
+
+        $("#mainiframe").attr("src", $(this).attr("href")).attr("data-id", "iframe" + $(this).attr("data-id"));
+        e.preventDefault();
+    });
 }
