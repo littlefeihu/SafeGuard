@@ -67,12 +67,12 @@
                         <span class="tpl-header-list-user-nick">小张</span><span class="tpl-header-list-user-ico"> <img src="/assets/img/user01.png"></span>
                     </a>
                     <ul class="am-dropdown-content">
-                        <li><a href="#"><span class="am-icon-bell-o"></span> 资料</a></li>
-                        <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
-                        <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+                        <li><a href="/SystemManage/User/Info" id="profile"><span class="am-icon-bell-o"></span> 资料</a></li>
+                        @*<li><a href="#" id=""><span class="am-icon-cog"></span> 设置</a></li>*@
+                        <li><a href="~/Login/OutLogin"><span class="am-icon-power-off"></span> 退出</a></li>
                     </ul>
                 </li>
-                <li><a href="###" class="tpl-header-list-link"><span class="am-icon-sign-out tpl-header-list-ico-out-size"></span></a></li>
+                <li><a href="~/Login/OutLogin" class="tpl-header-list-link"><span class="am-icon-sign-out tpl-header-list-ico-out-size"></span></a></li>
             </ul>
         </div>
     </header>
@@ -107,7 +107,6 @@
     @*<script src="~/Content/js/bootstrap/bootstrap.js"></script>*@
     <link href="~/Content/js/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <script src="~/Content/js/dialog/dialog.js"></script>
-    <script src="~/Content/js/cookie/jquery.cookie.js"></script>
     <link href="~/Content/css/framework-theme.css" rel="stylesheet" />
     <script src="~/Content/js/framework-ui.js"></script>
 

@@ -20,52 +20,55 @@
     <script src="/Content/js/fengmap.min.js"></script>
 </head>
 <body>
-    <section class="app-main">
-        <section class="screen-four">
-            <div class="box">
-                <div id="container">
-                    <div tabindex="0"></div>
-                </div>
-            </div>
-            <div class="box">
-                <div class="box-container">
-                    <ul class="nav nav-tabs">
-                        <li><a href="#" data-toggle="tab">室内地图</a></li>
-                        <li><a href="#" data-toggle="tab">设备管理</a></li>
-                    </ul>
-                </div>
 
-                <div id="fengMap"></div>
-            </div>
-            <div class="box">
-                <button class="roll-nav roll-right fullscreen" style="float:right;"><i class="fa fa-arrows-alt"></i></button>
-                <div class="box-container">
-                    <ul class="nav nav-tabs">
-                        <li><a href="#" data-toggle="tab">实时警情</a></li>
-                        <li><a href="#" data-toggle="tab">警情处理</a></li>
-                        <li><a href="#" data-toggle="tab">实时数据</a></li>
-                        <li><a href="#" data-toggle="tab">异常处理</a></li>
-                    </ul>
-                    <div>
-                        <img style="margin:auto;display:block;margin-top:20px;" src="~/Content/QQ截图20171116062536.png" />
-                    </div>
-                </div>
-            </div>
-            <div class="box">
-                <div class="box-container">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">监控区</h3>
-                        </div>
-                        <div class="panel-body">
-                            <img src="~/Content/31.jpg" />
+  
+            <section class="app-main">
+                <section class="screen-four">
+                    <div class="box">
+                        <div id="container">
+                            <div tabindex="0"></div>
                         </div>
                     </div>
+                    <div class="box">
+                        <div class="box-container">
+                            <ul class="nav nav-tabs">
+                                <li><a href="#" data-toggle="tab">室内地图</a></li>
+                                <li><a href="#" data-toggle="tab">设备管理</a></li>
+                            </ul>
+                        </div>
 
-                </div>
-            </div>
-        </section>
-    </section>
+                        <div id="fengMap"></div>
+                    </div>
+                    <div class="box">
+                        <button class="roll-nav roll-right fullscreen" style="float:right;"><i class="fa fa-arrows-alt"></i></button>
+                        <div class="box-container">
+                            <ul class="nav nav-tabs">
+                                <li><a href="#" data-toggle="tab">实时警情</a></li>
+                                <li><a href="#" data-toggle="tab">警情处理</a></li>
+                                <li><a href="#" data-toggle="tab">实时数据</a></li>
+                                <li><a href="#" data-toggle="tab">异常处理</a></li>
+                            </ul>
+                            <div>
+                                <img style="margin:auto;display:block;margin-top:20px;" src="~/Content/QQ截图20171116062536.png" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="box-container">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">监控区</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <img src="~/Content/31.jpg" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+            </section>
+   
     <script type="text/javascript">
 
         var map = new AMap.Map('container', { resizeEnable: true, zoom: 13, center: [117.164882, 31.856202] });

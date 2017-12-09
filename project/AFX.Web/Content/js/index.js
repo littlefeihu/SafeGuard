@@ -184,15 +184,38 @@ function GetLoadNav() {
     // 侧边导航下拉列表
     // ==========================
 
-    $('.tpl-left-nav-link-list').on('click', function () {
-
-        $(this).siblings('.tpl-left-nav-sub-menu').slideToggle(80)
-            .end()
-            .find('.tpl-left-nav-more-ico').toggleClass('tpl-left-nav-more-ico-rotate');
+    $(".tpl-left-nav-link-list").click(function (e) {
+        $(".tpl-left-nav-more-ico").removeClass("tpl-left-nav-more-ico-rotate");
+        e.preventDefault();
+        var $item = $(this).parent();
+        if (!$item.hasClass('active')) {
+            $item.parent().find('.active .tpl-left-nav-sub-menu').slideUp('fast');
+            $item.parent().find('.active').toggleClass('active');
+        }
+        $item.toggleClass('active');
+        if ($item.hasClass('active')) {
+            $item.children('.tpl-left-nav-sub-menu').slideDown('fast');
+        }
+        else {
+            $item.children('.tpl-left-nav-sub-menu').slideUp('fast');
+        }
+        $(this).find('.tpl-left-nav-more-ico').toggleClass('tpl-left-nav-more-ico-rotate');
     });
+
+
     $('.tpl-left-nav-link-list a').click(function (e) {
 
-        $("#mainiframe").attr("src", $(this).attr("href")).attr("data-id", "iframe" + $(this).attr("data-id"));
-        e.preventDefault();
+        OpenUrl(e, $(this).attr("href"));
     });
+    $("#profile").click(function (e) {
+        OpenUrl(e, $(this).attr("href"));
+    });
+
+    function OpenUrl(e, url) {
+
+        $("#mainiframe").attr("src", url);
+        $(".am-dropdown").dropdown('close');
+        e.preventDefault();
+
+    }
 }
